@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html dir=rtl>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title> حساب مساحة المثلثات </title>
+<link href="css/area.css" rel="stylesheet">
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="css/bootstrap.min1.css">
+<script src="js/db.js"></script>
+<!-- <script src="js/ratchet.js"></script> -->
+</head>
+
+<header class="bar bar-nav">
+  <a class="btn btn-link btn-nav pull-right" href="index.html">
+    <span class="icon icon-right-nav"></span> رجوع
+  </a>
+  <h1 class="title">السجل</h1>
+</header>
+<br><br>
+
+<body style="text-align: center;">
+	<div class="card">
+		<div class="container">
+			<ul class="nav nav-tabs">
+				<li><a style="padding: 10px 25px;" data-toggle="tab" href="#tab1-m">القائمة</a></li>
+				<li class="active"><a style="padding: 10px 25px;" data-toggle="tab" href="#tab3">جدول</a></li>
+			</ul>
+			<div class="tab-content">
+				<div id="tab1-m" class="tab-pane fade in active">
+					<ul class="list-group" id="all_tables" style="text-align: right;">
+					</ul>
+				</div>
+				<div id="tab3" class="tab-pane fade">
+					<div style="padding:5px 30px 5px 5px">
+						
+						<h3><a style="padding: 10px 25px;" data-toggle="tab" href="#tab1-m">رجوع</a></h3>
+						<h3>مثلثات</h3>
+						<table id="allrows1" class="table table-striped" style="width:97%;">
+							<thead>
+								<tr>
+								<th onclick="sortTable(0)">#</th>
+								<th onclick="sortTable(1)">الضلع 1</th>
+								<th onclick="sortTable(2)">الضلع 2</th>
+								<th onclick="sortTable(3)">الوتر</th>
+								<th onclick="sortTable(3)">مساحة (م2)</th>
+								<th onclick="sortTable(3)">مساحة (لبنة)</th>
+								</tr>
+							</thead>
+							<tbody>
+								<!-- <tr><td>0</td><td>test</td><td>test</td><td>test</td><td>test</td><td>test</td> </tr> -->
+							</tbody>
+							<tfoot></tfoot>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</body>
+<script>
+
+	const All  = get_all_tables();
+	// console.log(All);
+	for (var i = 0; i < All.length; i++) {
+		console.log(i);
+	}
+</script>
+<div class="bar bar-footer">
+	<a class="icon pull-right" href="#composeModal"></a>
+	<small class="updated-text">
+		<b>م/إبراهيم الرداعي - 770633517</b> - 
+		<a href="https://facebook.com/Mr.Ibrahem" target="_blank"><img src="icons/facebook.png" width="20" height="20"></a>
+		<a href="https://twitter.com/MrIbrahem" target="_blank"><img src="icons/twitter.png" width="20" height="20"></a>
+		<a href="https://www.instagram.com/ibrahem.al.radaei" target="_blank"><img src="icons/insta.png" width="20" height="20"></a>
+		<a href="https://github.com/MrIbrahem" target="_blank"><img src="icons/github.jpg" width="20" height="20"></a>
+	</small>
+</div>
+
+</html>

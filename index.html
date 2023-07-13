@@ -1,0 +1,168 @@
+<!DOCTYPE HTML>
+<html dir=rtl>
+<head>
+	<title> حساب مساحة المثلثات </title>
+	<meta charset="utf-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+
+	<link rel="stylesheet" href="css/bootstrap.min1.css">
+	<link href="css/area.css" rel="stylesheet">
+	<script src="js/db.js"></script>
+	<script src="js/area.js"></script>
+</head>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+<header class="bar bar-nav">
+	<div class="container-fluid">
+		<a class="icon icon-info pull-right" href="info.html"></a>
+		<a class="icon pull-left" href="logs.html">السجل</a>
+		<h1 class="title">حساب مساحة المثلثات</h1>
+	</div>
+</header>
+
+</nav>
+<br><br>
+
+<style>
+	.arrow-up {
+  width: 0; height: 0; border-left: 50px solid transparent;border-right: 50px solid transparent;border-bottom: 50px solid black;
+	}
+</style>
+<form> 
+<body style="text-align: center;">
+	<div class="card">
+		<div class="container">
+			<ul class="nav nav-tabs">
+				<li class="active"><a style="padding: 10px 25px;" data-toggle="tab" href="#tab1-m">الرئيسية</a></li>
+				<li><a style="padding: 10px 25px;" data-toggle="tab" href="#tab2-m">السجل</a></li>
+				<li class="pull-left"><a data-toggle="tab" href="#info">عن التطبيق</a></li>
+				<!-- <li><a data-toggle="tab" href="#menu3">Menu 3</a></li> -->
+			</ul>
+			<div class="tab-content">
+				<div id="tab1-m" class="tab-pane fade in active">
+					<ul class="table-view">
+						<!-- <li class="table-view-cell"><b>مساحة المثلث</b></li> -->
+						<!-- <li class="table-view-cell"><span id="height"></span><br><span id="width"></span></li> -->
+						<li class="table-view-cell">
+							<canvas id='canvas' height=100 width=300 style="border:1px solid #d3d3d3;"></canvas>
+						</li>
+						<!-- <li class="table-view-cell table-view-divider">
+							<input size="10" type="number" id="R1" readonly="true">
+							<input size="10" type="number" id="R2" readonly="true">
+							<input size="10" type="number" id="R3" readonly="true">
+						</li> -->
+						<li class="table-view-cell table-view-divider">
+							<input size="10" type="number" id="side1" placeholder="الضلع 1 (يمين)">
+							<input size="10" type="number" id="side2" placeholder="الضلع 2 (يسار)">
+							<input size="10" type="number" id="side3" placeholder="الوتر (قاعدة)">
+						</li>
+						<li class="table-view-cell">
+							<input type="button" style="width: 35%;" name="Submit" value="حساب" onclick="javascript:Area()" />
+							<input type="button" style="width: 35%;" name="Submit" value="أضف للإجمالي" onclick="javascript:AddToAll()" />
+						</li>
+						<li class="table-view-cell">
+							<table border=0 style="width:100%;">
+								<tr>
+									<td style="width:25%;"><b>متر مربع</b></td>
+									<td> <textarea readonly="true" cols="20" rows="2" id="display_m">0</textarea></td>
+									<td> <button class="btn" data-clipboard-action="copy" data-clipboard-target="#display_m">نسخ</button></td>
+								</tr>
+								<tr>
+									<td><b>لبنة</b></td>
+									<td> 
+										<textarea readonly="true" cols="20" rows="2" id="display_l">0</textarea>
+									</td>
+									<td> 
+										<button class="btn" data-clipboard-action="copy" data-clipboard-target="#display_l">نسخ</button>
+									</td>
+								</tr>
+							</table>
+						</li>
+
+						<li class="table-view-cell"><b>إجمالي مساحة المثلثات:</b></li>
+						<li class="table-view-cell">
+							<table border=0 style="width:100%;">
+								<tr>
+									<td style="width:25%;"><b>متر مربع</b></td>
+									<td> <textarea readonly="true" cols="20" rows="2" id="allm">0</textarea></td>
+									<td> 
+										<button class="btn" data-clipboard-action="copy" data-clipboard-target="#allm">نسخ</button>
+									</td>
+								</tr>
+								<tr>
+									<td><b>لبنة</b></td>
+									<td> <textarea readonly="true" cols="20" rows="2" id="alll">0</textarea></td>
+									<td>
+										<button 
+											class="btn" 
+											data-clipboard-action="copy" 
+											data-clipboard-target="#alll"
+										>نسخ</button>
+									</td>
+								</tr>
+							</table>
+						</li>
+					</ul>
+				</div>
+				<div id="tab2-m" class="tab-pane fade">
+					<div style="padding:5px 30px 5px 5px">
+						<h3>كافة المثلثات</h3>
+						<table id="allrows" class="table table-striped" style="width:97%;">
+							<thead>
+								<tr>
+								<th onclick="sortTable(0)">#</th>
+								<th onclick="sortTable(1)">الضلع 1</th>
+								<th onclick="sortTable(2)">الضلع 2</th>
+								<th onclick="sortTable(3)">الوتر</th>
+								<th onclick="sortTable(3)">مساحة (م2)</th>
+								<th onclick="sortTable(3)">مساحة (لبنة)</th>
+								</tr>
+							</thead>
+							<tbody>
+								<!-- <tr><td>0</td><td>test</td><td>test</td><td>test</td><td>test</td><td>test</td> </tr> -->
+							</tbody>
+							<tfoot></tfoot>
+						</table>
+					</div>
+				</div>
+				<div id="info" class="tab-pane fade">
+					info
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="js/clipboard.min.js"></script>
+<script>
+	var clipboard = new ClipboardJS('.btn');
+
+	clipboard.on('success', function (e) {
+		console.info('Action:', e.action);
+		console.info('Text:', e.text);
+		console.info('Trigger:', e.trigger);
+	});
+
+	clipboard.on('error', function (e) {
+		console.info('Action:', e.action);
+		console.info('Text:', e.text);
+		console.info('Trigger:', e.trigger);
+	});
+</script>
+
+<div class="bar bar-footer">
+	<a class="icon pull-right" href="#composeModal"></a>
+	<small class="updated-text">
+		<b>م/إبراهيم الرداعي - 770633517</b> - 
+		<a href="https://facebook.com/Mr.Ibrahem" target="_blank"><img src="icons/facebook.png" width="20" height="20"></a>
+		<a href="https://twitter.com/MrIbrahem" target="_blank"><img src="icons/twitter.png" width="20" height="20"></a>
+		<a href="https://www.instagram.com/ibrahem.al.radaei" target="_blank"><img src="icons/insta.png" width="20" height="20"></a>
+		<a href="https://github.com/MrIbrahem" target="_blank"><img src="icons/github.jpg" width="20" height="20"></a>
+	</small>
+</div>
+
+</nav>
+</form>
+</html>
